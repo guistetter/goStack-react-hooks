@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function App() {
+  const [tech, setTech] = useState(['react', 'react native']);
+  const [newTech, setNewTech] = useState('');
+  function handleAdd() {
+    setTech([...tech, newTech]);
+    setNewTech('');
+  }
   return (
-    <div className="App">
-      <h1>Ola</h1>
-    </div>
+    <>
+      <ul>
+        {tech.map((t) => (
+          <li key={t}>{t}</li>
+        ))}
+      </ul>
+      <input
+        type="text"
+        value={newTech}
+        onChange={(e) => setNewTech(e.target.value)}
+      />
+      <button type="button" onClick={handleAdd}>
+        Botão
+      </button>
+    </>
   );
 }
 
